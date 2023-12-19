@@ -360,3 +360,41 @@ for i, (pose1, pose2) in enumerate(scenario4.robot_states, start=1):
     print(f"Room 4. Iteration {i}")
     conduct_experiment(scenario4.obstacle_coords, pose1, pose2)
 
+
+
+# Результаты для визуализации
+data = [
+    {"room": 1, "iteration": 1, "accuracy": 0.212},
+    {"room": 1, "iteration": 2, "accuracy": 0.764},
+    {"room": 1, "iteration": 3, "accuracy": 4.049},
+    {"room": 1, "iteration": 4, "accuracy": 3.658},
+    {"room": 1, "iteration": 5, "accuracy": 7.839},
+    {"room": 2, "iteration": 1, "accuracy": 0.933},
+    {"room": 2, "iteration": 2, "accuracy": 50.186},
+    {"room": 2, "iteration": 3, "accuracy": 0.311},
+    {"room": 2, "iteration": 4, "accuracy": 3.96},
+    {"room": 2, "iteration": 5, "accuracy": 0.471},
+    {"room": 3, "iteration": 1, "accuracy": 31.853},
+    {"room": 3, "iteration": 2, "accuracy": 0.481},
+    {"room": 3, "iteration": 3, "accuracy": 7.019},
+    {"room": 3, "iteration": 4, "accuracy": 4.332},
+    {"room": 4, "iteration": 1, "accuracy": 0.721},
+    {"room": 4, "iteration": 2, "accuracy": 42.86},
+    {"room": 4, "iteration": 3, "accuracy": 0.0},
+    {"room": 4, "iteration": 4, "accuracy": 0.0}
+]
+
+# Подготовка данных для графика
+rooms = [d["room"] for d in data]
+iterations = [d["iteration"] for d in data]
+accuracies = [d["accuracy"] for d in data]
+
+# Создание графика
+plt.figure(figsize=(10, 6))
+plt.scatter(iterations, accuracies, c=rooms, cmap='viridis', alpha=0.6)
+plt.colorbar(label='Room Number')
+plt.title("Accuracy of Transformation Vector by Room and Iteration")
+plt.xlabel("Iteration")
+plt.ylabel("Accuracy (%)")
+plt.grid(True)
+plt.show()
